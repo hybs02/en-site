@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>Automating the Boring Parts</title>
+<link>https://hybs02.github.io/en-site/</link>
+<description>A non-engineer&#x27;s log of building income streams with Claude Code</description>
+<item><title>I Generated 8 Books in One Day. Here&#x27;s What Nobody Tells You About the Part After That.</title><link>https://hybs02.github.io/en-site/8-books-one-day-publishing-bottleneck.html</link><guid isPermaLink="true">https://hybs02.github.io/en-site/8-books-one-day-publishing-bottleneck.html</guid><pubDate>Sat, 25 Jul 2026 00:00:00 +0900</pubDate><description>Eight full-length manuscripts in a single day, and two months later not one of them is published. An honest account of automating the fast half of a job and calling it progress.</description></item>
+<item><title>What Claude Code Actually Does That ChatGPT Doesn&#x27;t (A Non-Engineer&#x27;s Take)</title><link>https://hybs02.github.io/en-site/claude-code-vs-chatgpt-non-engineer.html</link><guid isPermaLink="true">https://hybs02.github.io/en-site/claude-code-vs-chatgpt-non-engineer.html</guid><pubDate>Sat, 25 Jul 2026 00:00:00 +0900</pubDate><description>Not a benchmark comparison. Four things I watched Claude Code do on my own machine that a chat window structurally can&#x27;t, plus the parts where it left the work to me.</description></item>
+<item><title>I Built a Self-Updating Blog for $12 a Year — Here&#x27;s the Whole Setup</title><link>https://hybs02.github.io/en-site/self-updating-blog-12-dollars.html</link><guid isPermaLink="true">https://hybs02.github.io/en-site/self-updating-blog-12-dollars.html</guid><pubDate>Sat, 25 Jul 2026 00:00:00 +0900</pubDate><description>The full build log for this site: GitHub Pages, a custom domain, and a Python publishing pipeline I wrote myself. Real costs, real mistakes, and the month it quietly stopped working.</description></item>
+</channel></rss>

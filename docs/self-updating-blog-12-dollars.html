@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I Built a Self-Updating Blog for $12 a Year — Here&#x27;s the Whole Setup</title>
+<meta name="description" content="The full build log for this site: GitHub Pages, a custom domain, and a Python publishing pipeline I wrote myself. Real costs, real mistakes, and the month it quietly stopped working.">
+<link rel="canonical" href="https://hybs02.github.io/en-site/self-updating-blog-12-dollars.html">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<link rel="alternate" type="application/rss+xml" href="./feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="I Built a Self-Updating Blog for $12 a Year — Here&#x27;s the Whole Setup">
+<meta property="og:description" content="The full build log for this site: GitHub Pages, a custom domain, and a Python publishing pipeline I wrote myself. Real costs, real mistakes, and the month it quietly stopped working.">
+<meta property="og:url" content="https://hybs02.github.io/en-site/self-updating-blog-12-dollars.html">
+<meta property="og:site_name" content="Automating the Boring Parts">
+<meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "I Built a Self-Updating Blog for $12 a Year — Here's the Whole Setup", "description": "The full build log for this site: GitHub Pages, a custom domain, and a Python publishing pipeline I wrote myself. Real costs, real mistakes, and the month it quietly stopped working.", "url": "https://hybs02.github.io/en-site/self-updating-blog-12-dollars.html", "author": {"@type": "Person", "name": "hybs02"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-07-25", "dateModified": "2026-07-25"}</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="./index.html">Automating the Boring Parts</a>
+  <p class="tagline">A non-engineer&#x27;s log of building income streams with Claude Code</p>
+</header>
+<main>
+<time>2026-07-25</time>
+<h1>I Built a Self-Updating Blog for $12 a Year — Here&#x27;s the Whole Setup</h1>
+<p class="byline">執筆： <a href="./about.html">hybs02</a></p>
+<div class="tags"><span class="tag">build log</span><span class="tag">GitHub Pages</span><a class="tag" href="./tag-automation.html">automation</a><span class="tag">costs</span></div>
+
+<p>The site you&#x27;re reading costs me about $12 a year. That&#x27;s the domain. Hosting is free, the certificate is free, the analytics are free, and the software that turns my drafts into web pages is a Python script sitting on my own laptop.</p>
+<p>I&#x27;m not an engineer. I want that out of the way early, because &quot;I wrote my own static site generator&quot; sounds like a credential and it isn&#x27;t one. I described what I wanted, <a href="./claude-code-vs-chatgpt-non-engineer.html">Claude Code</a> wrote most of the code, and I spent the rest of my time discovering which parts of it didn&#x27;t actually work.</p>
+<p>So here is the whole thing. What it is, what it costs, where I got stuck, and the part that embarrassed me.</p>
+<h2>What it is, and why it isn&#x27;t WordPress</h2>
+<p>There&#x27;s no admin panel. No database. No login. The setup has four moving parts:</p>
+<ul>
+<li>Articles live as plain text files (Markdown) in a folder.</li>
+<li>A Python script reads that folder and generates HTML — article pages, the index, an RSS feed, a sitemap.</li>
+<li>The generated files get pushed to GitHub, and GitHub Pages serves them.</li>
+<li>A scheduled task on my PC pulls one finished article out of a queue and runs that whole chain, on set days, without me.</li>
+</ul>
+<p>&quot;Self-updating&quot; only refers to that last piece. I write in bursts when I have the time and the ideas. The queue drains one post at a time whether or not I&#x27;m paying attention. That&#x27;s the entire trick, and it&#x27;s less impressive than the phrase makes it sound.</p>
+<p>One constraint I set deliberately: the generator uses nothing but Python&#x27;s standard library. No frameworks. No packages to install. Nothing that can break in eighteen months because someone else&#x27;s project moved on without me. At the time this felt like paranoia. It has since saved me twice.</p>
+<p>I also built in a gate. An article only publishes if it&#x27;s marked as reviewed. Automating publication without a quality check just means thin posts go out on a reliable schedule, which is the worst possible outcome — you&#x27;ve automated the wrong half.</p>
+<h3>Why not WordPress</h3>
+<p>This is the question I&#x27;d ask, so I&#x27;ll answer it.</p>
+<p><strong>Money, first.</strong> WordPress needs a server. Even at a few dollars a month, that&#x27;s a bill arriving during a stretch where you&#x27;re earning nothing. I knew that stretch was going to be long. A recurring charge against zero revenue creates a specific kind of pressure, and pressure makes people do stupid things — publish filler, plaster ads on a site with no readers, quit at month four.</p>
+<p><strong>Fragility, second.</strong> WordPress is powerful because it has plugins, and plugins need updating, and unpatched things get compromised. I wanted a system I could ignore for a month. Anything requiring maintenance was the wrong shape for that.</p>
+<p><strong>Automation, third.</strong> If an article is just a text file in a folder, then &quot;publish one post&quot; is a few lines of code. If an article lives inside a CMS, publishing means driving a web interface with a robot. One of those breaks constantly. The other barely can.</p>
+<p>The tradeoff is real and I should say it plainly: this setup is bad if you want to write from your phone, and bad if you care about design. You get a fast, plain site and total control. That was the trade I wanted. It might not be yours.</p>
+<h2>The bill, line by line</h2>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>What I use</th><th>Cost</th></tr></thead><tbody><tr><td>Domain (.net)</td><td>registrar selling at cost</td><td>~$12/year</td></tr><tr><td>Hosting</td><td>GitHub Pages</td><td>$0</td></tr><tr><td>HTTPS certificate</td><td>issued automatically</td><td>$0</td></tr><tr><td>Analytics</td><td>Cloudflare</td><td>$0</td></tr><tr><td>Email list</td><td>Buttondown free tier</td><td>$0</td></tr><tr><td>Site generator</td><td>wrote it myself</td><td>$0</td></tr></tbody></table></div>
+<p>That&#x27;s a dollar a month. Less than a coffee, and I mean the bad kind from the machine.</p>
+<p>Now the asterisk, because &quot;$12 a year&quot; is exactly the kind of number that gets repeated without its footnote. <strong>The AI subscription I used to build this is not free.</strong> I&#x27;d be paying for it anyway for other work, so I don&#x27;t count it against the blog, but that&#x27;s an accounting choice and you should know I made it. My infrastructure costs $12. My tooling doesn&#x27;t. Anyone who tells you their whole operation runs on twelve dollars and never mentions what&#x27;s on their card each month is leaving something out.</p>
+<p>The other real cost is time. Half a day to get the first version live. A few hours per article. Free hosting doesn&#x27;t make a blog free — it moves the price from your bank account to your evenings.</p>
+<h2>Where a non-engineer actually gets stuck</h2>
+<p>Nobody writes this part down, so here&#x27;s mine.</p>
+<p><strong>PATH.</strong> My first wall was a tool that was definitely installed and definitely not runnable. The command existed on disk; the terminal insisted it didn&#x27;t. If you&#x27;ve never met PATH, this is genuinely baffling — the computer appears to be lying to you. It isn&#x27;t. It just doesn&#x27;t look in the folder you assumed.</p>
+<p><strong>Encoding.</strong> I&#x27;m on Windows and I write in Japanese, and my first generated pages came out as walls of garbage characters. Not a broken script — a working script writing text in one encoding while something downstream read it in another. The fix was one line specifying UTF-8. Finding out that&#x27;s what was wrong took considerably longer than one line.</p>
+<p><strong>Deploying the wrong thing.</strong> I spent an evening convinced the pipeline was broken because the live site wouldn&#x27;t update. It wasn&#x27;t broken. I was pushing the wrong folder — the source, not the built output. Everything I checked locally looked perfect, which is exactly why it took so long. The bug wasn&#x27;t in the code. It was in my mental model of which directory mattered.</p>
+<p><strong>DNS and HTTPS.</strong> Attaching a custom domain involves a wait. Records propagate, certificates get issued, and for a while the site is broken in ways that look like mistakes. Twice I &quot;fixed&quot; something that was only mid-propagation, which reset the clock. The correct move here is to leave it alone and go do something else.</p>
+<p><strong>Analytics reading zero.</strong> I installed the tracking, watched it report nothing for days, and assumed I had no readers. Ad blockers were eating the script. I had to change how counting worked entirely. Worth remembering that in this niche, a large slice of your audience blocks the exact thing you&#x27;re using to count them.</p>
+<h2>It stopped running for a month and I didn&#x27;t notice</h2>
+<p>Here&#x27;s the part I&#x27;d rather not include.</p>
+<p>I built the automatic publishing, tested it, watched a post go out on schedule, and felt done. Some weeks later I actually looked. It had been dead for over a month.</p>
+<p>The cause was almost insultingly small: the scheduler&#x27;s launch file had the wrong line endings — Unix-style newlines where Windows expected its own. Not a logic error. A formatting difference in a file I&#x27;d never think to inspect. And the errors weren&#x27;t hidden, either. They&#x27;d been accumulating in a log the whole time. I just never opened it.</p>
+<p>What I took from that: <strong>the hard part of automation isn&#x27;t making it run, it&#x27;s noticing when it stops.</strong> Everyone verifies their system on day one. The failure lands in week five, after you&#x27;ve stopped checking, and a silent system looks identical to a working one from the outside.</p>
+<p>I&#x27;ve since made the state visible at a glance, which helps exactly as much as I remember to glance at it. So I put it on the calendar: once a month, look. Not elegant. But the elegant version was the one that died for a month.</p>
+<h2>Where this actually stands</h2>
+<p>Ten posts in, my analytics say about 880 unique visitors a month. I don&#x27;t believe that number, and I&#x27;d rather explain why than quote it.</p>
+<p>It&#x27;s measured at the edge, in front of the site, so it counts crawlers and automated sweeps along with people. The tell is that it hasn&#x27;t moved: roughly the same figure two months running, while the post count went up. Traffic that ignores how much you&#x27;ve published is traffic that isn&#x27;t reading. My honest estimate of actual humans is a small fraction of that, and revenue is zero.</p>
+<p>That&#x27;s not a failure and it&#x27;s not a success, it&#x27;s just where the thing is. The infrastructure question — can a non-engineer run a real, automatically-updating site for a dollar a month — is answered, and the answer is yes. The question that actually pays is whether the writing is any good and whether anyone finds it. That one takes months, and no build log gets you out of it.</p>
+<p>It&#x27;s the same lesson I ran into on a bigger scale when I <a href="./8-books-one-day-publishing-bottleneck.html">generated eight books in a day and published none of them</a>: building the machine is the part that&#x27;s tractable, and it&#x27;s never the part that decides the outcome.</p>
+<p>The cheapness is the strategy, though. At $12 a year I can be wrong for a long time. If this cost me $30 a month I&#x27;d have started cramming affiliate links in at week three, and you&#x27;d be reading a worse site.</p>
+
+
+</main>
+<footer class="site-foot">
+  <nav class="foot-nav"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy Policy</a></nav>
+  <p>&copy; 2026 hybs02</p>
+</footer>
+
+</body>
+</html>
