@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hybs02.github.io/en-site/sitemap.xml

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Claude Code Actually Does That ChatGPT Doesn&#x27;t (A Non-Engineer&#x27;s Take)</title>
+<meta name="description" content="Not a benchmark comparison. Four things I watched Claude Code do on my own machine that a chat window structurally can&#x27;t, plus the parts where it left the work to me.">
+<link rel="canonical" href="https://hybs02.github.io/en-site/claude-code-vs-chatgpt-non-engineer.html">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<link rel="alternate" type="application/rss+xml" href="./feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Claude Code Actually Does That ChatGPT Doesn&#x27;t (A Non-Engineer&#x27;s Take)">
+<meta property="og:description" content="Not a benchmark comparison. Four things I watched Claude Code do on my own machine that a chat window structurally can&#x27;t, plus the parts where it left the work to me.">
+<meta property="og:url" content="https://hybs02.github.io/en-site/claude-code-vs-chatgpt-non-engineer.html">
+<meta property="og:site_name" content="Automating the Boring Parts">
+<meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What Claude Code Actually Does That ChatGPT Doesn't (A Non-Engineer's Take)", "description": "Not a benchmark comparison. Four things I watched Claude Code do on my own machine that a chat window structurally can't, plus the parts where it left the work to me.", "url": "https://hybs02.github.io/en-site/claude-code-vs-chatgpt-non-engineer.html", "author": {"@type": "Person", "name": "hybs02"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-07-25", "dateModified": "2026-07-25"}</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="./index.html">Automating the Boring Parts</a>
+  <p class="tagline">A non-engineer&#x27;s log of building income streams with Claude Code</p>
+</header>
+<main>
+<time>2026-07-25</time>
+<h1>What Claude Code Actually Does That ChatGPT Doesn&#x27;t (A Non-Engineer&#x27;s Take)</h1>
+<p class="byline">執筆： <a href="./about.html">hybs02</a></p>
+<div class="tags"><span class="tag">Claude Code</span><span class="tag">tools</span><span class="tag">non-engineer</span><a class="tag" href="./tag-honest-review.html">honest review</a></div>
+
+<p>For about a year my workflow was: ask the chat assistant a question, get a block of code, paste it into a file, run it, watch it fail, paste the error back, get a revision, paste that in, run it again.</p>
+<p>That loop is where I lived. And I got things done in it. But every single step of it was me acting as a courier between two systems that couldn&#x27;t see each other.</p>
+<p>Claude Code removes the courier. That&#x27;s the honest one-line summary, and everything below is just me being specific about what that changes when you can&#x27;t read the code you&#x27;re carrying.</p>
+<h2>The difference isn&#x27;t intelligence, it&#x27;s access</h2>
+<p>Let me set the comparison up fairly, because &quot;X beats Y&quot; posts usually cheat here.</p>
+<p>The model answering me in a chat window is very capable. Chat products have also added sandboxes and agent modes that run code somewhere. But none of them are looking at the folder on my laptop where my blog lives. They see what I paste. They produce text I have to place somewhere. The gap between their output and my working system is me, and I&#x27;m the unreliable part.</p>
+<p>Claude Code runs in my terminal, in my project folder. It reads my actual files, edits them in place, runs commands, and reads what comes back out. Same underlying intelligence, completely different relationship to my work.</p>
+<p>For an engineer that&#x27;s a convenience. For a non-engineer it&#x27;s the whole thing — because the courier steps are precisely the ones I&#x27;m bad at.</p>
+<h2>Example one: the garbled text</h2>
+<p>Early on, my site generator produced pages of nonsense characters instead of Japanese. Classic encoding problem, though I didn&#x27;t know that word yet.</p>
+<p>Here&#x27;s how that goes with a chat window. I describe the symptom. I get asked which encoding I&#x27;m using, and I don&#x27;t know. I get told to check, and I don&#x27;t know how. I paste the script; I get a suggested fix; I paste the fix into the wrong place because I misjudge the indentation; it now fails differently. Round and round. On my own this class of problem eats an evening, and about 80% of that evening is me relaying information badly.</p>
+<p>What actually happened: I said the output was garbled. It ran the script. It read the traceback itself, edited the file, ran it again, and looked at the resulting page. Fixed in a couple of minutes.</p>
+<p>The change I care about isn&#x27;t speed. <strong>It&#x27;s that the diagnosis never depended on my ability to describe the problem accurately.</strong> It could go look.</p>
+<h2>Example two: the tables I broke without knowing</h2>
+<p>This one is my favorite, because it&#x27;s a failure that a chat window could not have caught.</p>
+<p>I&#x27;d been writing comparison tables in my articles using standard Markdown. My homemade generator didn&#x27;t support tables — nobody had told it to — so it published them as mangled rows of pipes and dashes. On the live site. For weeks. I never noticed because I proofread in my editor, where the source looks fine.</p>
+<p>When I did notice, the fix wasn&#x27;t one file. It meant changing the renderer to understand table syntax, adding styling so the result didn&#x27;t look terrible, checking whether the RSS output needed the same treatment, and rebuilding every previously published page.</p>
+<p>I couldn&#x27;t have described that job accurately, because I didn&#x27;t know which files were involved. I said, roughly: &quot;my tables are publishing broken, fix it.&quot; It went and found the pieces.</p>
+<p>That&#x27;s the second capability, and it&#x27;s bigger than editing: <strong>it can work across a codebase I haven&#x27;t read.</strong> A chat assistant can only help with the file I know to paste, which means my blind spots become its blind spots.</p>
+<h2>Two more, briefly: eight books and an unread log</h2>
+<p>I used Claude Code to generate eight English Kindle manuscripts in a single day. Full-length ones, roughly 30,000 words each.</p>
+<p>I&#x27;m not holding that up as an achievement — I&#x27;ll get to why in a second — but it&#x27;s a clean illustration of the difference. A chat window can write you a chapter. Genuinely good ones. What it can&#x27;t do is *be* the production line: create the folder structure, write chapter files to disk, keep eight separate projects straight, convert the finished text into ebook format, generate cover files, and hand you a directory you can actually work with at the end.</p>
+<p>That&#x27;s not a smarter model. That&#x27;s a model with file access and a shell. Everything in that list is boring mechanical work, and boring mechanical work at volume is exactly what a chat interface cannot absorb, because every step needs a human to copy something from one window into another.</p>
+<p>The important caveat: generating eight manuscripts turned out to be the easy part of publishing eight books, and two months later I have published exactly none of them. <a href="./8-books-one-day-publishing-bottleneck.html">That&#x27;s its own article</a>. But the generation step itself was real, and it was only possible because the tool had hands.</p>
+<h3>The log I never opened</h3>
+<p>The <a href="./self-updating-blog-12-dollars.html">automatic publishing pipeline behind this site</a> died and stayed dead for over a month without my noticing. The cause was a trivial formatting difference in a scheduler file — wrong line endings for Windows.</p>
+<p>The errors weren&#x27;t hidden. They had been piling up in a log file the entire time, and I had never once opened it. When I finally asked what was wrong, the tool read the log, read the scheduler file, spotted the mismatch and fixed it.</p>
+<p>I could not have pasted that log into a chat, because I didn&#x27;t know it existed. Which is a fair summary of the whole difference: <strong>a chat assistant can only help with what you already know to show it.</strong></p>
+<h2>What it doesn&#x27;t do, and where I still get burned</h2>
+<p>I&#x27;d be selling you something if I stopped here.</p>
+<p><strong>It does what you asked, not what you needed.</strong> The broken tables were my fault, structurally. I never said &quot;I&#x27;m going to use tables in my articles,&quot; so the generator never handled them. It executes the request precisely. Noticing what&#x27;s missing from the request stays your job, and that&#x27;s the job that actually requires taste.</p>
+<p><strong>Vague in, vague out.</strong> &quot;Build me a nice blog&quot; produced something forgettable. &quot;Make it so that dropping a text file into this folder turns it into a published post&quot; produced the thing I still use. The skill I&#x27;ve built over these months isn&#x27;t programming. It&#x27;s describing a finished state clearly enough that someone else could build it. That skill transfers to everything, incidentally.</p>
+<p><strong>Working is not the same as correct.</strong> Everything ran for months while quietly publishing broken tables. When I later went back and audited my own setup properly, I found several more things that were running and wrong. A running system provides no evidence that it&#x27;s doing the right thing, and the tool won&#x27;t volunteer that judgment.</p>
+<p><strong>You still have to check the output.</strong> Especially anything visual, and anything factual. It produces plausible work fast, and plausible-fast is the exact combination that makes people stop verifying.</p>
+<h3>Who I&#x27;d tell to skip it</h3>
+<p>If you want to hand a project over and not look at it again, this will hurt you. You&#x27;ll get something that runs, you&#x27;ll assume that means it&#x27;s finished, and you&#x27;ll find out in five weeks that it isn&#x27;t. That&#x27;s not a hypothetical, it&#x27;s my experience twice over.</p>
+<p>If you have something specific you want built, and enough stubbornness to keep asking &quot;why is it doing that&quot; — this collapses the distance between wanting a tool and having one, and it does it without you learning to program first.</p>
+<p>I still use a chat window every day, for thinking out loud, for questions, for drafting. The two aren&#x27;t rivals. One is for talking about the work. The other one does the work, in the actual folder, on the actual files. Once you&#x27;ve had the second thing, going back to being a courier is hard to stomach.</p>
+<aside class="cta"><h3>About this site</h3><p>I'm documenting what it actually takes to build automated income streams as a non-engineer — including the parts that failed. <a href="./self-updating-blog-12-dollars.html">Start with the build log</a>.</p></aside>
+
+</main>
+<footer class="site-foot">
+  <nav class="foot-nav"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy Policy</a></nav>
+  <p>&copy; 2026 hybs02</p>
+</footer>
+
+</body>
+</html>
