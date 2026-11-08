@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code Filled In My KDP Listings. It Still Needed Me Twice</title>
+<meta name="description" content="Claude Code, using Claude in Chrome, filled in KDP listings for two of my ebooks and stopped before Publish. The weekly cap, AI disclosure, and my two steps.">
+<link rel="canonical" href="https://hybs02.github.io/en-site/claude-code-lists-kindle-books.html">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<link rel="alternate" type="application/rss+xml" href="./feed.xml">
+<meta name="google-site-verification" content="ldEFJt9x6ON01KAlMibJ2tfG-DmSWwFh3pCue2hLM_g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code Filled In My KDP Listings. It Still Needed Me Twice">
+<meta property="og:description" content="Claude Code, using Claude in Chrome, filled in KDP listings for two of my ebooks and stopped before Publish. The weekly cap, AI disclosure, and my two steps.">
+<meta property="og:url" content="https://hybs02.github.io/en-site/claude-code-lists-kindle-books.html">
+<meta property="og:site_name" content="Automating the Boring Parts">
+<meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Code Filled In My KDP Listings. It Still Needed Me Twice", "description": "Claude Code, using Claude in Chrome, filled in KDP listings for two of my ebooks and stopped before Publish. The weekly cap, AI disclosure, and my two steps.", "url": "https://hybs02.github.io/en-site/claude-code-lists-kindle-books.html", "author": {"@type": "Person", "name": "hybs02"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-11-09", "dateModified": "2026-11-09"}</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="./index.html">Automating the Boring Parts</a>
+  <p class="tagline">A non-engineer&#x27;s log of building income streams with Claude Code</p>
+</header>
+<main>
+<time>2026-11-09</time>
+<h1>Claude Code Filled In My KDP Listings. It Still Needed Me Twice</h1>
+<p class="byline">Written by <a href="./about.html">hybs02</a></p>
+<div class="tags"><a class="tag" href="./tag-kdp.html">KDP</a><a class="tag" href="./tag-income.html">income</a><a class="tag" href="./tag-claude-code.html">Claude Code</a><a class="tag" href="./tag-automation.html">automation</a></div>
+
+<p>If you&#x27;ve let AI write your Kindle books and the listing is where you&#x27;re stuck, you can hand most of the form-filling to Claude Code too. Most, not all. These are the places where it needed a rule or needed me.</p>
+<p>At the end of October 2026, Claude Code listed two of my ebooks on KDP. It drove my own Chrome through the Claude in Chrome extension, so it used the KDP login I already had and never handled my password. It filled in the title, description, keywords, categories, files and price from metadata it had produced with each manuscript, and stopped before the Publish button. I read a summary, said go, and both went into review. As of November 5, both are on sale.</p>
+<p>That came after five months of not listing them, which I wrote about in <a href="./8-books-one-day-publishing-bottleneck.html">the post about generating eight books in a day</a>.</p>
+<p>The setup is small. You install the Claude in Chrome extension, start Claude Code with <code>claude --chrome</code> (or run <code>/chrome</code> inside a session), and stay signed in to KDP in that browser. It needs a paid Claude plan.</p>
+<h2>Read the shelf and the weekly count first</h2>
+<p>The first thing Claude Code does now is read the bookshelf page in my KDP account and compare it with my tracking file. The first time it did that, it found a book my file called a draft that had been on sale for months. The rule that came out of it: the bookshelf is right and the file is wrong. When they disagree, the file gets corrected to match the shelf, and only then does anything else start.</p>
+<p>The second thing is the weekly count. As of October 2026, KDP&#x27;s help pages say you can create two new ebook titles a week, and submit two for the first time, with the count resetting on Sunday at 00:00 UTC. Saving a new title as a draft uses one of the two. So does a title you set up by hand outside the routine, which is another reason to read the shelf first.</p>
+<p>At the end of October, two books used up that week&#x27;s slots. Two more used the first week of November&#x27;s. As of November 7, three of the original eight are still unlisted, so those take at least two more weeks.</p>
+<p>I don&#x27;t know what the form does if you go over the cap, and I haven&#x27;t tested it. The routine doesn&#x27;t start a listing when the count says zero.</p>
+<h2>Two things my metadata got wrong</h2>
+<p>The description box is a rich-text editor. My generated metadata had paragraphs separated by blank lines, and entered that way, every paragraph ran together into one block. The book that had been on sale since early June had exactly that: its whole description as one wall of text, on the store page, for five months.</p>
+<p>Now the metadata carries a second version with each paragraph wrapped in paragraph tags, and Claude Code sets the editor&#x27;s contents to that version directly instead of pasting. If you paste by hand, paste formatted text, not the tags. Typed into the box, the tags would likely show up as text.</p>
+<p>The categories were the other problem. My metadata wrote them as three-level paths, and some of those paths came from the paperback category list, which isn&#x27;t the same tree as the Kindle store&#x27;s. At least two ended in a category the Kindle store doesn&#x27;t have.</p>
+<p>The rule now is to walk the category picker one level at a time, take the matching category if there is one and the nearest one if there isn&#x27;t, and show me a table of &quot;the metadata said this, I chose this&quot; before Publish. I&#x27;d rather see a substitution than find out later that a book is filed somewhere odd.</p>
+<h2>Where the form fought back</h2>
+<p>The manuscript and cover uploads aren&#x27;t kept until you press &quot;Save and Continue.&quot; During one listing the session timed out between uploading and saving, and both files had to go in again. Now each book is uploaded and saved on its own before anything else happens.</p>
+<p>After an upload, KDP processes the file for a while. Claude Code checks the page every few seconds until the processing message is gone, because one long wait in a single step timed out at around 45 seconds. Then KDP runs its own quality check on the manuscript. When it passes, it says so in a line about having found no spelling or image problems. Sometimes that check sits at &quot;running&quot; for minutes, and the page can still be saved while it does.</p>
+<p>Right after a page opens, a dark overlay sometimes covers it for a moment. Clicks during that moment do nothing, and nothing tells you.</p>
+<p>Then the price. I price new books at $0.99 to start, and at that price KDP offers only the 35% royalty option (70% needs a list price of at least $2.99). If the US price goes in before the royalty is chosen, the other marketplaces aren&#x27;t filled in from it. The fix was to choose the royalty first and then enter the price again. The royalty radio button also ignored the usual way Claude Code clicks things on a page, so it clicks by position instead.</p>
+<p>Between that overlay and this button, every click is now followed by a read-back to check it took.</p>
+<h2>The AI disclosure is mine to confirm</h2>
+<p>KDP asks whether the book contains AI-generated content, and for these books it does. Claude Code answers those questions:</p>
+<ul>
+<li>Text: AI-generated, the whole work, with minimal or no editing.</li>
+<li>Translation: none.</li>
+<li>Images: none.</li>
+<li>Tool named in the free-text field: Claude.</li>
+</ul>
+<p>The images answer needs a reason. KDP defines AI-generated images as ones created by an AI-based tool, and that includes covers. My covers are shapes and type drawn by a Python script. No image model made them, though Claude wrote the script. I read a script-drawn cover as outside that definition. If your cover came from an image generator, it&#x27;s inside it, and the answer is yes.</p>
+<p>After the questions, a checkbox appears confirming that your answers are true. That one it can&#x27;t tick for me. When it tried, Claude refused the click and asked me instead. It&#x27;s a statement from the person publishing, so it has to come from me. When it lists two books, it brings both to that checkbox in two tabs and asks me once. I tick two boxes and it carries on.</p>
+<div class="table-wrap"><table><thead><tr><th>Step</th><th>Who does it</th></tr></thead><tbody><tr><td>Read the shelf, compare with the file</td><td>Claude Code</td></tr><tr><td>Check the weekly count</td><td>Claude Code</td></tr><tr><td>Fill the details, categories, files, price</td><td>Claude Code</td></tr><tr><td>Tick the AI confirmation</td><td>Me</td></tr><tr><td>Read the summary and say &quot;publish&quot;</td><td>Me</td></tr><tr><td>Press Publish</td><td>Claude Code, after I say so</td></tr></tbody></table></div>
+<p>It&#x27;s the same split as the listing tool for the murder mystery game in <a href="./zero-products-listed.html">the post about the digital products I never listed</a>, where the last step is also mine.</p>
+<p>Before Publish, it shows me a table: title, subtitle, author name, the three categories and any substitutions, keywords, the AI answers, the quality check result, price, and royalty. I read that, not the form.</p>
+<h2>What the slow part is now</h2>
+<p>The files had to be right before any of this (<a href="./8-books-one-day-publishing-bottleneck.html">the pre-listing check is in the eight-books post</a>). A form-filling tool can only enter what the files say.</p>
+<p>Listing used to be the step I didn&#x27;t do. Now my part of the form is reading one table and ticking a box. The slow parts are deciding that a book is fit to sell, and after that, the weekly cap.</p>
+<p>None of this sells books. The two listed at the end of October haven&#x27;t been on sale long enough to say anything about sales. The one on sale since June sold no copies in the 30 days before November 1.</p>
+<p>If you try this yourself, start with the shelf, not the form:</p>
+<blockquote><p>Read my KDP bookshelf and list every title with its status and price. Compare it with my tracking file and show me every row where they disagree. Don&#x27;t change anything in KDP.</p></blockquote>
+<p>Then, for one book:</p>
+<blockquote><p>Using Claude in Chrome, start a new Kindle eBook in KDP from the metadata in this folder. Save after each upload, choose the royalty before entering the price, and read every field back after setting it. Leave the AI confirmation checkbox for me. Stop before Publish and show me a table of every field, including any category you had to substitute.</p></blockquote>
+<aside class="cta"><h3>About this site</h3><p>I'm documenting what it actually takes to build automated income streams as a non-engineer — including the parts that failed. <a href="./self-updating-blog-12-dollars.html">Start with the build log</a>.</p></aside>
+
+</main>
+<footer class="site-foot">
+  <nav class="foot-nav"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy Policy</a></nav>
+  <p>&copy; 2026 hybs02</p>
+</footer>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e68807f2531a462986fa95731dfba93e"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

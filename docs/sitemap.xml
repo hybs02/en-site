@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hybs02.github.io/en-site/</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://hybs02.github.io/en-site/</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://hybs02.github.io/en-site/claude-code-lists-kindle-books.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://hybs02.github.io/en-site/zero-products-listed.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://hybs02.github.io/en-site/blog-quiet-99-days.html</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://hybs02.github.io/en-site/8-books-one-day-publishing-bottleneck.html</loc><lastmod>2026-07-25</lastmod></url>
@@ -9,8 +10,10 @@
   <url><loc>https://hybs02.github.io/en-site/about.html</loc></url>
   <url><loc>https://hybs02.github.io/en-site/privacy.html</loc></url>
   <url><loc>https://hybs02.github.io/en-site/tags.html</loc></url>
+  <url><loc>https://hybs02.github.io/en-site/tag-kdp.html</loc></url>
+  <url><loc>https://hybs02.github.io/en-site/tag-income.html</loc></url>
   <url><loc>https://hybs02.github.io/en-site/tag-claude-code.html</loc></url>
+  <url><loc>https://hybs02.github.io/en-site/tag-automation.html</loc></url>
   <url><loc>https://hybs02.github.io/en-site/tag-failure-log.html</loc></url>
   <url><loc>https://hybs02.github.io/en-site/tag-build-log.html</loc></url>
-  <url><loc>https://hybs02.github.io/en-site/tag-automation.html</loc></url>
 </urlset>
