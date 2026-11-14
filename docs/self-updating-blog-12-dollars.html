@@ -2,97 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A $0 Self-Updating Blog on GitHub Pages: The Whole Setup</title>
-<meta name="description" content="How this site runs for $0 on GitHub Pages: a Python generator, a reviewed-only queue, and a scheduled publisher. Real costs, the setup steps, and what broke.">
-<link rel="canonical" href="https://hybs02.github.io/en-site/self-updating-blog-12-dollars.html">
-<link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="./style.css">
-<link rel="alternate" type="application/rss+xml" href="./feed.xml">
-<meta name="google-site-verification" content="ldEFJt9x6ON01KAlMibJ2tfG-DmSWwFh3pCue2hLM_g">
-<meta property="og:type" content="article">
-<meta property="og:title" content="A $0 Self-Updating Blog on GitHub Pages: The Whole Setup">
-<meta property="og:description" content="How this site runs for $0 on GitHub Pages: a Python generator, a reviewed-only queue, and a scheduled publisher. Real costs, the setup steps, and what broke.">
-<meta property="og:url" content="https://hybs02.github.io/en-site/self-updating-blog-12-dollars.html">
-<meta property="og:site_name" content="Automating the Boring Parts">
-<meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "A $0 Self-Updating Blog on GitHub Pages: The Whole Setup", "description": "How this site runs for $0 on GitHub Pages: a Python generator, a reviewed-only queue, and a scheduled publisher. Real costs, the setup steps, and what broke.", "url": "https://hybs02.github.io/en-site/self-updating-blog-12-dollars.html", "author": {"@type": "Person", "name": "hybs02"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-07-25", "dateModified": "2026-07-25"}</script>
-
+<title>Automating the Boring Parts</title>
+<link rel="canonical" href="https://hybs02.github.io/en-site/self-updating-blog-github-pages.html">
+<meta http-equiv="refresh" content="0; url=https://hybs02.github.io/en-site/self-updating-blog-github-pages.html">
 </head>
 <body>
-<header class="site-head">
-  <a class="brand" href="./index.html">Automating the Boring Parts</a>
-  <p class="tagline">A non-engineer&#x27;s log of building income streams with Claude Code</p>
-</header>
-<main>
-<time>2026-07-25</time>
-<h1>A $0 Self-Updating Blog on GitHub Pages: The Whole Setup</h1>
-<p class="byline">Written by <a href="./about.html">hybs02</a></p>
-<div class="tags"><a class="tag" href="./tag-build-log.html">build log</a><span class="tag">GitHub Pages</span><a class="tag" href="./tag-automation.html">automation</a><span class="tag">costs</span></div>
-
-<p>The site you&#x27;re reading costs me nothing to run. It lives on GitHub Pages at a github.io address, the certificate comes with it, the analytics run on a free service, and the software that turns my drafts into web pages is a Python script on my own laptop.</p>
-<p>This isn&#x27;t my first blog on this setup. Another blog I run uses the same pipeline with a custom domain, and that one costs about $12 a year, all of it the domain. Most of what I know about where this setup breaks, I learned there.</p>
-<p>I&#x27;m not an engineer, and I didn&#x27;t write this generator in any sense that would impress one. I described what I wanted, <a href="./claude-code-vs-chatgpt-non-engineer.html">Claude Code</a> wrote most of the code, and I spent the rest of my time finding out which parts didn&#x27;t work.</p>
-<h2>What it is, and why it isn&#x27;t WordPress</h2>
-<p>There&#x27;s no admin panel, no database and no login. The setup has four moving parts:</p>
-<ul>
-<li>Articles live as plain text files (Markdown) in a folder.</li>
-<li>A Python script reads that folder and generates HTML: article pages, the index, tag pages, an RSS feed, a sitemap.</li>
-<li>The generated files get pushed to GitHub, and GitHub Pages serves them.</li>
-<li>A scheduled task on my PC takes the next finished article from a queue folder at 7 a.m. on Mondays and Thursdays and runs that whole chain.</li>
-</ul>
-<p>That task only publishes. Writing is a separate job: twice a week a Claude Code scheduled task checks the queue, and when it&#x27;s low, drafts a post and decides on its own whether to queue it. That half is in <a href="./blog-refills-itself.html">the post about the blog refilling itself</a>. The queue spreads the posts out, one at a time.</p>
-<p>The generator uses nothing but Python&#x27;s standard library. There are no packages to install, so there&#x27;s nothing that breaks because someone else&#x27;s project moved on.</p>
-<p>I also built in a gate. A queued article only publishes if its header says <code>reviewed: true</code>, and that line only goes in after the draft passes the machine checks and a blind review by a separate Claude instance. Automating publication without a quality check just means thin posts go out on a reliable schedule. The gate only covers the queue: a file dropped straight into the articles folder goes live on the next build.</p>
-<h3>Why not WordPress</h3>
-<p>Self-hosted WordPress needs a server, and a server is a monthly bill during a stretch where the site earns nothing. WordPress.com has a free plan, but it puts its own ads on your site and doesn&#x27;t let you install plugins. I knew the zero-revenue stretch was going to be long, and a recurring charge against zero pushes you toward filler posts and early ads.</p>
-<p>The other reasons were upkeep and automation. Plugins need updating, and I wanted something I could leave alone for a month. And if an article is a text file in a folder, &quot;publish one post&quot; is a file copy and a few commands, while publishing inside a CMS means scripting a web interface that changes whenever the vendor redesigns it.</p>
-<p>The downside: this setup is bad if you want to write from your phone, and bad if you care about design. You get a fast, plain site and full control.</p>
-<h2>The bill, line by line</h2>
-<div class="table-wrap"><table><thead><tr><th>Item</th><th>What I use</th><th>Cost</th></tr></thead><tbody><tr><td>Domain</td><td>none, a github.io subdomain</td><td>$0</td></tr><tr><td>Hosting</td><td>GitHub Pages</td><td>$0</td></tr><tr><td>HTTPS certificate</td><td>included with github.io</td><td>$0</td></tr><tr><td>Analytics</td><td>Cloudflare Web Analytics</td><td>$0</td></tr><tr><td>Site generator</td><td>written with Claude Code</td><td>$0</td></tr></tbody></table></div>
-<p>GitHub Pages is free for public repositories. Published sites are limited to 1 GB, with a soft bandwidth limit of 100 GB a month, which a small text blog won&#x27;t come near. One condition worth reading before you monetize: GitHub says Pages is not intended for, or allowed to be used as, free hosting for an online business or an e-commerce site. I haven&#x27;t put ads on this site, so I haven&#x27;t had to find out where that line is.</p>
-<p>If you want your own domain, that&#x27;s the one recurring cost. On my other blog it&#x27;s about $12 a year.</p>
-<p><strong>The AI subscription I used to build this is not free.</strong> I&#x27;d pay for it anyway for other work, so I don&#x27;t count it against the blog, but that&#x27;s an accounting choice and you should know I made it. The other cost is time. The pipeline took half a day to get working on my other blog, and this site reused the same scripts. New posts are drafted by the scheduled Claude Code run, not by me.</p>
-<h2>Setting it up</h2>
-<p>These are the steps, in the order I&#x27;d do them again.</p>
-<ol>
-<li>Make two repositories. The source (drafts, scripts, settings) goes in a private one. Only the generated HTML goes in a public one, because free GitHub Pages needs a public repository. That way the drafts and the automation stay private.</li>
-<li>In the public repository, open Settings → Pages, choose &quot;Deploy from a branch&quot;, and pick the <code>main</code> branch and the <code>/docs</code> folder. My deploy script copies the generated site into a <code>docs</code> folder, so the setting has to match where your files land.</li>
-<li>Put the site&#x27;s full address in the generator&#x27;s config. The RSS feed, the sitemap and the social preview image all use absolute links, and they come out wrong without it.</li>
-<li>Write a small <code>.cmd</code> file that runs the publish script with the full path to Python, and register it in Windows Task Scheduler on the days you want posts to go out. The task only runs if the PC is on at that time, so in the task&#x27;s Settings tab, tick &quot;Run task as soon as possible after a scheduled start is missed&quot;.</li>
-<li>Mark a draft <code>reviewed: true</code> and put it in the <code>scheduled</code> folder. Run the publish script with <code>--dry-run</code> first, which only reports which file would go next. Then run it for real once by hand and watch the whole chain work.</li>
-</ol>
-<h2>What to ask for if you build your own</h2>
-<p>My scripts live in a private repository, but the spec fits in a few lines, and that&#x27;s what Claude Code needs. This is close to what I&#x27;d ask for today:</p>
-<blockquote><p>Build a static site generator in Python using only the standard library. It reads Markdown files with a header (title, date, slug, description, tags) from <code>articles/</code> and writes article pages, an index, tag pages, an RSS feed and a sitemap into <code>docs/</code>. Use the <code>base_url</code> from <code>config.json</code> for every absolute link.</p><p>Then build a publish script. It picks the lowest-numbered file in <code>scheduled/</code> whose header says <code>reviewed: true</code>, sets its date to today, moves it to <code>articles/</code>, runs the generator, and pushes. Give it a <code>--dry-run</code> mode that only reports which file would go next, and make it write every run to a log file.</p><p>Then a deploy script that copies <code>docs/</code> into a clone of my public repository and pushes it, and a <code>.cmd</code> file that runs the publish script with the full path to Python.</p></blockquote>
-<h2>Where a non-engineer gets stuck</h2>
-<p><strong>Garbled text.</strong> My first generated pages came out as walls of garbage characters. The script worked fine. Windows and Python simply disagreed about which text encoding to use. Claude Code found it in a couple of minutes by running the script and reading the error, and the fix was one line specifying UTF-8.</p>
-<p><strong>Two Pythons.</strong> Windows can end up with more than one Python. Typing <code>python</code> reached one copy while the real installation was somewhere else. That&#x27;s harmless when you run things by hand and breaks the moment a scheduled task starts them in a different environment. The fix is to find the real one and write its full path into the <code>.cmd</code> file. <code>where.exe python</code> lists every copy Windows can see, in the order it tries them. In PowerShell, plain <code>where</code> means something else and prints nothing, so type the <code>.exe</code>. A path that ends in <code>WindowsApps</code> is a shortcut to the Microsoft Store, not a real install. Then ask the copy you actually use for its own path:</p>
-<pre><code>
-where.exe python
-python -c &quot;import sys; print(sys.executable)&quot;
-</code></pre>
-<p><strong>DNS and HTTPS.</strong> This one only applies if you attach a custom domain, which I did on the other blog. DNS records take time to spread and the certificate takes time to issue, and for a while the site looks broken. The right move was to leave it alone.</p>
-<p><strong>Analytics reading zero.</strong> On the other blog I installed tracking, watched it report nothing for days, and assumed I had no readers. Ad blockers were stopping the script. This site has the same weakness. I can&#x27;t route a github.io address through Cloudflare, because I don&#x27;t control its DNS, so the only way to count visitors is a small tracking script on each page, and anyone whose browser blocks it doesn&#x27;t get counted.</p>
-<h2>The month it stopped and I didn&#x27;t notice</h2>
-<p>This happened on the other blog, on this same pipeline.</p>
-<p>I built the automatic publishing, watched a post go out on schedule, and felt done. Some weeks later I looked again. It had been dead for over a month.</p>
-<p>The cause was the scheduler&#x27;s <code>.cmd</code> file. It had been saved with Unix-style line endings, the invisible characters at the end of each line, and Windows expects its own. The errors had been piling up in a log the whole time, and I never opened it.</p>
-<p>What I took from that: <strong>a scheduled job that fails doesn&#x27;t tell you.</strong> I now save <code>.cmd</code> files with Windows line endings on purpose, and I look at the publish log once a month.</p>
-<h2>Where this site stands</h2>
-<p>The first three posts went up by hand on July 25, 2026. Every post since then has gone out through the queue, at 7 a.m. on a Monday or a Thursday, with nobody at the keyboard. The long gap after those first three is in <a href="./blog-quiet-99-days.html">the 99-days post</a>.</p>
-<p>I&#x27;m not quoting a visitor number. I haven&#x27;t looked at this site&#x27;s analytics closely enough to trust a figure, and as above, the tracking script undercounts the readers most likely to be here. Revenue is zero.</p>
-<p>The infrastructure part works. It costs $0 a month and a non-engineer can run it. Whether anyone reads the posts is a separate question.</p>
-<p>It&#x27;s the same lesson I ran into when I <a href="./8-books-one-day-publishing-bottleneck.html">generated eight books in a day and found the publishing was the hard part</a>.</p>
-<p>The low cost is what lets me keep going. At $0 I can be wrong for a long time. At $30 a month I think I&#x27;d have added affiliate links by week three.</p>
-
-
-</main>
-<footer class="site-foot">
-  <nav class="foot-nav"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy Policy</a></nav>
-  <p>&copy; 2026 hybs02</p>
-</footer>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e68807f2531a462986fa95731dfba93e"}'></script><!-- End Cloudflare Web Analytics -->
+<p><a href="./self-updating-blog-github-pages.html">https://hybs02.github.io/en-site/self-updating-blog-github-pages.html</a></p>
 </body>
 </html>

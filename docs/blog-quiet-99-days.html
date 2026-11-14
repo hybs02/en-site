@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Automated Blog Went 99 Days Without a Post. Nothing Broke.</title>
-<meta name="description" content="Three posts in July, then 99 days of silence. Nothing failed; the queue was empty. How I made the refill a Claude Code skill, and what an AI reviewer found.">
+<meta name="description" content="A few posts in July, then 99 days of silence. Nothing failed; the queue was empty. How I made the refill a Claude Code skill, and what an AI reviewer found.">
 <link rel="canonical" href="https://hybs02.github.io/en-site/blog-quiet-99-days.html">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="./style.css">
@@ -12,12 +12,12 @@
 <meta name="google-site-verification" content="ldEFJt9x6ON01KAlMibJ2tfG-DmSWwFh3pCue2hLM_g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="My Automated Blog Went 99 Days Without a Post. Nothing Broke.">
-<meta property="og:description" content="Three posts in July, then 99 days of silence. Nothing failed; the queue was empty. How I made the refill a Claude Code skill, and what an AI reviewer found.">
+<meta property="og:description" content="A few posts in July, then 99 days of silence. Nothing failed; the queue was empty. How I made the refill a Claude Code skill, and what an AI reviewer found.">
 <meta property="og:url" content="https://hybs02.github.io/en-site/blog-quiet-99-days.html">
 <meta property="og:site_name" content="Automating the Boring Parts">
 <meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "My Automated Blog Went 99 Days Without a Post. Nothing Broke.", "description": "Three posts in July, then 99 days of silence. Nothing failed; the queue was empty. How I made the refill a Claude Code skill, and what an AI reviewer found.", "url": "https://hybs02.github.io/en-site/blog-quiet-99-days.html", "author": {"@type": "Person", "name": "hybs02"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-11-02", "dateModified": "2026-11-02"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "My Automated Blog Went 99 Days Without a Post. Nothing Broke.", "description": "A few posts in July, then 99 days of silence. Nothing failed; the queue was empty. How I made the refill a Claude Code skill, and what an AI reviewer found.", "url": "https://hybs02.github.io/en-site/blog-quiet-99-days.html", "author": {"@type": "Organization", "name": "Automating the Boring Parts"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-11-02", "dateModified": "2026-11-02"}</script>
 
 </head>
 <body>
@@ -28,54 +28,53 @@
 <main>
 <time>2026-11-02</time>
 <h1>My Automated Blog Went 99 Days Without a Post. Nothing Broke.</h1>
-<p class="byline">Written by <a href="./about.html">hybs02</a></p>
+<p class="byline">Written by <a href="./about.html">Automating the Boring Parts</a></p>
 <div class="tags"><a class="tag" href="./tag-build-log.html">build log</a><a class="tag" href="./tag-failure-log.html">failure log</a><a class="tag" href="./tag-automation.html">automation</a><a class="tag" href="./tag-claude-code.html">Claude Code</a></div>
 
 <p>If your automated blog has stopped publishing and the scheduler says every run succeeded, check the queue before you check the code. Mine was empty.</p>
-<p>The first three posts on this site went up by hand on July 25, 2026. As I write this on November 1, nothing new has gone up since: 99 days. I went looking for the break and there wasn&#x27;t one. The site was up, the pages loaded, and the publishing scripts were where I&#x27;d left them.</p>
+<p>The first posts on this site went up by hand on July 25, 2026. As I write this on November 1, nothing new has gone up since: 99 days. I went looking for the break and there wasn&#x27;t one. The site was up, the pages loaded, and the publishing scripts were where I&#x27;d left them.</p>
 <h2>Nothing failed. The queue was empty.</h2>
-<p>The <a href="./self-updating-blog-12-dollars.html">setup behind this site</a> can publish on its own. Finished posts wait in a queue folder, and a scheduled task on my PC takes the next one on Mondays and Thursdays and runs the whole chain: build, push, deploy.</p>
+<p>The <a href="./self-updating-blog-github-pages.html">setup behind this site</a> can publish on its own. Finished posts wait in a queue folder, and a scheduled task on my PC takes the next one on Mondays and Thursdays and runs the whole chain: build, push, deploy.</p>
 <p>On this site, the queue was empty and I had never switched the scheduled task on. So for 99 days nothing ran, and nothing logged an error.</p>
-<p>Another blog I run, on the same pipeline, has been quiet since early August: 90 days as of today. There the scheduler did run. On most Monday and Thursday mornings it woke up, found nothing to publish, wrote <code>BACKLOG_EMPTY</code> to its log and exited with success. I&#x27;d designed an empty queue to count as a normal ending rather than an error, so nothing ever turned red.</p>
-<p>I run the two sites as a pair, and when I stopped writing for one, I stopped for both.</p>
+<p>The first site I built on this pipeline had gone quiet too, and there the scheduler did run. On most Monday and Thursday mornings it woke up, found nothing to publish, wrote <code>BACKLOG_EMPTY</code> to its log and exited with success. I&#x27;d designed an empty queue to count as a normal ending rather than an error, so nothing ever turned red.</p>
 <h2>If your scheduled blog has gone quiet</h2>
 <p>These are the checks that would have told me in a minute:</p>
 <ul>
-<li>Open the publish log, not just the site. On the other blog it said <code>BACKLOG_EMPTY</code> twice a week for three months.</li>
+<li>Open the publish log, not just the site. On that first site it said <code>BACKLOG_EMPTY</code> twice a week, week after week.</li>
 <li>In Windows Task Scheduler, find the task and read Last Run Time and Last Run Result. A result of 0 means the job ran and exited normally. It doesn&#x27;t mean anything was published.</li>
 <li>Count the files in the queue folder. Zero files and a successful task is exactly the state I was in.</li>
 <li>If there&#x27;s no task at all, the site was never automated in the first place. That was this one.</li>
 </ul>
 <h2>The step I never automated</h2>
 <p>Writing new posts was always meant to be a human step. When I built the pipeline, Claude Code&#x27;s cloud scheduler couldn&#x27;t reach my setup, and I couldn&#x27;t get it to run unattended on the PC either. I also wanted to read every post before it went out. So the plan was simple: when the queue gets low, I ask Claude Code to write more, I read the drafts, and the approved ones go in the queue.</p>
-<p>I did build a warning: a small control panel for both sites that flags a queue running low or empty. It only warns me while it&#x27;s open, and I wasn&#x27;t opening it.</p>
+<p>I did build a warning: a small control panel that flags a queue running low or empty. It only warns me while it&#x27;s open, and I wasn&#x27;t opening it.</p>
 <p>I&#x27;d learned this once already. That same pipeline once sat dead for over a month because a launcher file had the wrong line endings and I never read the log. A warning you have to go and look at isn&#x27;t much of a warning, and knowing that didn&#x27;t stop it from happening again.</p>
 <h2>Refilling is now a Claude Code skill</h2>
-<p>This time I didn&#x27;t just ask for more posts. I asked Claude Code to turn the whole refill job into a skill. In Claude Code, a skill is a written procedure plus a few small scripts, kept together, which it follows whenever I ask for that kind of job. This one covers both sites.</p>
+<p>This time I didn&#x27;t just ask for more posts. I asked Claude Code to turn the whole refill job into a skill. In Claude Code, a skill is a written procedure plus a few small scripts, kept together, which it follows whenever I ask for that kind of job.</p>
 <div class="table-wrap"><table><thead><tr><th>Step</th><th>What happens</th></tr></thead><tbody><tr><td>Health check</td><td>Days since the last post, posts in the queue, whether the scheduled task exists, whether the live site responds</td></tr><tr><td>Topic</td><td>Candidates come from things I actually built or broke on my PC, and I pick</td></tr><tr><td>Interview</td><td>It asks me for anything that isn&#x27;t in my files: a number, a reason, the exact error text</td></tr><tr><td>Draft</td><td>Written to match the existing posts</td></tr><tr><td>Machine checks</td><td>Word count, links, hype phrases, stock AI phrases</td></tr><tr><td>Blind review</td><td>A separate Claude instance reads the draft cold and critiques it</td></tr><tr><td>Gate</td><td>Only a draft with zero machine-check errors and no required fixes left from the review goes in the queue</td></tr></tbody></table></div>
-<p>If you want to try the same thing, this is close to what I&#x27;d ask for if I were starting over:</p>
+<p>If you want to try the same thing, this is the request I&#x27;d make if I were starting over:</p>
 <blockquote><p>Turn my blog refill job into a skill. Start with a health check: days since the last post, how many reviewed posts are in <code>scheduled/</code>, whether the scheduled task exists, and whether the live site responds. Then suggest topics from things I actually did on this PC, ask me for any number or error text you can&#x27;t find in my files, draft to match my existing posts, run the word-count and phrase checks, have a fresh instance review the draft without our conversation, and stop for my approval before anything goes into the queue.</p></blockquote>
 <p>The first health check on this site came back with three problems: nothing in the queue, 99 days since the last post, and no scheduled task registered at all.</p>
-<p>The machine checks for this site are tuned to its own posts, not to a generic rule. The three July posts ran from about 1,250 to 1,500 words, so a draft under 1,200 gets flagged. They used 5 to 8 dashes per thousand words, so more than 8 gets flagged, because heavy dash use reads as machine-written to a lot of readers. And the word &quot;honest&quot; turned up in all three. That&#x27;s a tic, and the check now counts it.</p>
+<p>The machine checks for this site are tuned to its own posts, not to a generic rule. The July posts ran from about 1,250 to 1,500 words, so a draft under 1,200 gets flagged. They used 5 to 8 dashes per thousand words, so more than 8 gets flagged, because heavy dash use reads as machine-written to a lot of readers. And the word &quot;honest&quot; turned up in every one of them. That&#x27;s a tic, and the check now counts it.</p>
 <h2>The reviewer that didn&#x27;t know the history</h2>
 <p>The step that paid for itself was the blind review. It&#x27;s the same Claude, started fresh, without any of the conversation that produced the draft. It gets three things: where the file is, who the reader is, and what they&#x27;d type into a search box. I don&#x27;t tell it what I was going for or what I think of the result, because when I do, the critique tends to agree with me.</p>
 <p>I tested it first on the post I point every new reader to: the build log for this site. It came back with &quot;not publishable.&quot;</p>
-<p>The post said this site costs about $12 a year for its domain. This site doesn&#x27;t have its own domain. It runs on a free github.io address. The post said &quot;ten posts in&quot; and quoted roughly 880 visitors a month. Those were the other blog&#x27;s numbers, and this site had three posts. It listed an email signup this site has never had, and it described the scheduler publishing posts here, which had never happened once.</p>
-<p>When that post was drafted in July, the other blog&#x27;s facts came along with the story, and I didn&#x27;t catch it. For three months, the page I send new readers to first described a different website.</p>
+<p>The post gave this site a yearly domain bill, a post count and a monthly visitor figure. None of them were this site&#x27;s. It has no domain of its own and runs on a free github.io address, it had three posts at the time, and I had no visitor figure for it that I trusted. It listed an email signup this site has never had, and it described the scheduler publishing posts here, which had never happened once.</p>
+<p>When that post was drafted in July, numbers that belonged somewhere else came along with the story, and I didn&#x27;t catch it. For three months, the page I send new readers to first described a site that wasn&#x27;t this one.</p>
 <p>I rewrote it and ran the reviewer again, this time pointing it at my deploy script, my setup notes and the repository&#x27;s Pages settings. It found that the setup steps I&#x27;d just added told readers to serve the site from the root folder, while this site serves from a <code>/docs</code> folder. That one never went live.</p>
 <p>None of these were caught by the machine checks. Word counts and phrase lists can&#x27;t tell you that a number belongs to the wrong website. A reader with no memory of writing the post, checking it against the files, could.</p>
 <h2>What&#x27;s different now, and what isn&#x27;t</h2>
 <p>One more post is queued behind this one: the tool I built to sell digital products, and why it still lists zero of them. Posts go out on Mondays and Thursdays, one at a time.</p>
 <p>The skill drafted two more, a GPU speed test and a video encoder comparison, and I held them back. They were accurate, but they were about the tools, not about the blog or about earning anything, which is what this site is for.</p>
 <p>The cause of the silence was that the skill only ran when I asked. It now runs without me: a Claude Code scheduled task starts it twice a week, and it queues a draft only if the draft passes the gates, with no approval from me. How that works, and what its first run held back, is in <a href="./blog-refills-itself.html">the post about the blog refilling itself</a>.</p>
-<p>An alert that comes to me, an email or a phone notification when the queue reaches zero, still isn&#x27;t built. The health check is the first thing every run does, and the next status post goes up whether the numbers look good or not.</p>
+<p>An alert that comes to me, an email or a phone notification when the queue reaches zero, still isn&#x27;t built. The health check is the first thing every run does, and the next status post goes up in early December whether the numbers look good or not.</p>
 <p>This site carries no ads and has earned nothing so far, so the 99 days didn&#x27;t cost money. On a site that did earn, the same silence would have had a price, and the scheduler would have reported success the whole time.</p>
-<aside class="cta"><h3>About this site</h3><p>I'm documenting what it actually takes to build automated income streams as a non-engineer — including the parts that failed. <a href="./self-updating-blog-12-dollars.html">Start with the build log</a>.</p></aside>
+<aside class="cta"><h3>About this site</h3><p>I'm documenting what it actually takes to build automated income streams as a non-engineer, including the parts that failed. <a href="./self-updating-blog-github-pages.html">Start with the build log</a>.</p></aside>
 
 </main>
 <footer class="site-foot">
   <nav class="foot-nav"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy Policy</a></nav>
-  <p>&copy; 2026 hybs02</p>
+  <p>&copy; 2026 Automating the Boring Parts</p>
 </footer>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e68807f2531a462986fa95731dfba93e"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
