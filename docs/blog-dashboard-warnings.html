@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>&quot;Monitoring an Automated Blog: What My Dashboard Warns About&quot;</title>
+<meta name="description" content="Claude Code built me a one-screen panel for my automated blog. It raises five warnings and leaves two out on purpose. The rules, and what a panel can&#x27;t do.">
+<link rel="canonical" href="https://hybs02.github.io/en-site/blog-dashboard-warnings.html">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<link rel="alternate" type="application/rss+xml" href="./feed.xml">
+<meta name="google-site-verification" content="ldEFJt9x6ON01KAlMibJ2tfG-DmSWwFh3pCue2hLM_g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&quot;Monitoring an Automated Blog: What My Dashboard Warns About&quot;">
+<meta property="og:description" content="Claude Code built me a one-screen panel for my automated blog. It raises five warnings and leaves two out on purpose. The rules, and what a panel can&#x27;t do.">
+<meta property="og:url" content="https://hybs02.github.io/en-site/blog-dashboard-warnings.html">
+<meta property="og:site_name" content="Automating the Boring Parts">
+<meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "\"Monitoring an Automated Blog: What My Dashboard Warns About\"", "description": "Claude Code built me a one-screen panel for my automated blog. It raises five warnings and leaves two out on purpose. The rules, and what a panel can't do.", "url": "https://hybs02.github.io/en-site/blog-dashboard-warnings.html", "author": {"@type": "Organization", "name": "Automating the Boring Parts"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-11-16", "dateModified": "2026-11-16"}</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="./index.html">Automating the Boring Parts</a>
+  <p class="tagline">A non-engineer&#x27;s log of building income streams with Claude Code</p>
+</header>
+<main>
+<time>2026-11-16</time>
+<h1>&quot;Monitoring an Automated Blog: What My Dashboard Warns About&quot;</h1>
+<p class="byline">Written by <a href="./about.html">Automating the Boring Parts</a></p>
+<div class="tags"><a class="tag" href="./tag-build-log.html">build log</a><a class="tag" href="./tag-automation.html">automation</a><a class="tag" href="./tag-claude-code.html">Claude Code</a></div>
+
+<p>This site had a one-screen dashboard watching it the whole time it went 99 days without a post.</p>
+<p>The panel is a small desktop app that Claude Code wrote for me. It reads the same folders the publisher uses and shows when the next post goes out, how many finished posts are waiting, and whatever needs me. On the morning of November 11, 2026, it read:</p>
+<div class="table-wrap"><table><thead><tr><th>Tile</th><th>Shows</th><th>Detail</th></tr></thead><tbody><tr><td>Next post</td><td>11/12</td><td>Thursday 7:00</td></tr><tr><td>Posts in the queue</td><td>2</td><td>Covers through Mon 11/16</td></tr></tbody></table></div>
+<p>In the panel&#x27;s &quot;Do now&quot; list, the queue line was amber: two posts left.</p>
+<p>I changed the rules behind that list on November 1. This post is about those rules: what earns a line there, and what I took out.</p>
+<h2>The September rules</h2>
+<p>The first version showed only the last publish date and the queue count. From late July it also put a red band across the top for a failed run, an empty queue, ten days without a post, or publishing switched off.</p>
+<p>On September 26, Claude Code rebuilt the panel. The desktop screen and a phone screen had each been doing their own math, and that moved into one shared file. The warnings were split into red and amber and gathered into a &quot;Do now&quot; list the same day, with these rules:</p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Condition</th></tr></thead><tbody><tr><td>Red</td><td>The last scheduled publish failed</td></tr><tr><td>Red</td><td>Scheduled publishing is on and the queue is empty</td></tr><tr><td>Amber</td><td>One or two posts left in the queue</td></tr><tr><td>Amber</td><td>Scheduled publishing is off</td></tr><tr><td>Amber</td><td>Publishing is on and ten or more days have passed since the last post</td></tr></tbody></table></div>
+<p>September 26 was day 63 of this site&#x27;s 99 quiet days. The scheduled publisher had never been switched on and the queue was empty, so under those rules the line was amber: publishing off, nothing queued. The ten-day rule only applied while publishing was on, so it didn&#x27;t fire.</p>
+<p>So on the day the list was rebuilt, it already had a warning for this site. The queue stayed empty for another five weeks. I covered why in <a href="./blog-quiet-99-days.html">the post about the 99 days</a>: the panel only talks while it&#x27;s open.</p>
+<h2>A warning with nothing to do</h2>
+<p>On November 1, two posts went into this site&#x27;s queue and the scheduled publisher was switched on for the first time. The next morning&#x27;s run was set.</p>
+<p>Under the September rules, the panel would have shown two amber warnings that day. One said two posts were left, which was fair: two posts is thin. The other said 99 days since the last post. That line was true, and it asked for nothing. It would have cleared itself at 7 a.m. the next day whether I read it or not.</p>
+<p>The second line is the kind I wanted gone. This is alert fatigue at the scale of one person and one screen: a panel that shows amber every time I open it teaches me to stop reading amber, and the next amber line might be one that needs me.</p>
+<h2>Five warnings in, two left out</h2>
+<p>The rule the list has followed since November 1 fits in one sentence: it shows only things that stay broken unless I act.</p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Condition</th><th>What I do</th></tr></thead><tbody><tr><td>Red</td><td>The last scheduled publish failed</td><td>Read the log, fix the cause</td></tr><tr><td>Red</td><td>Publishing is on and the queue is empty</td><td>Refill</td></tr><tr><td>Red</td><td>Publishing is on and the publisher hasn&#x27;t run for 8 days or more</td><td>Check the PC was on at all that week, then the task&#x27;s last result</td></tr><tr><td>Amber</td><td>One or two posts left</td><td>Refill</td></tr><tr><td>Amber</td><td>Scheduled publishing is off, or the job is missing</td><td>Turn it on</td></tr></tbody></table></div>
+<p>A sixth, uncolored line isn&#x27;t a warning. It says how many queued posts haven&#x27;t been reviewed and so won&#x27;t publish.</p>
+<p>Two things no longer earn a line:</p>
+<div class="table-wrap"><table><thead><tr><th>Left out</th><th>Why</th></tr></thead><tbody><tr><td>A long gap since the last post, when the queue has posts and the next run is set</td><td>The next run fixes it without me</td></tr><tr><td>A site whose publisher has never run and isn&#x27;t switched on</td><td>It hasn&#x27;t stopped. It hasn&#x27;t started. The panel marks it as dormant</td></tr></tbody></table></div>
+<p>The 8-day rule replaced the 10-day one, and they count different things. The old rule counted days since a post went out. The new one counts days since the publish script last wrote down that it ran, post or no post.</p>
+<p>The job runs on Mondays and Thursdays, so the longest normal gap between runs is four days, and one missed run makes it seven. Eight days means two runs in a row didn&#x27;t happen while the job is still registered. Either the PC stayed off or asleep the whole time (the task is registered to run as soon as possible after a missed start, so a single missed 7 a.m. run catches up the next time the PC wakes), or the task is failing before it starts. If the job has been deleted, the panel shows the amber &quot;publishing is off&quot; line instead. An empty queue already has its own red line. The old rule lumped those failures together, and they need different fixes.</p>
+<p>The panel reads three things to decide all of this:</p>
+<ul>
+<li>A small state file the publisher rewrites on every run: last run time, last result, last publish date.</li>
+<li>The queue folder, where it counts the posts marked as reviewed.</li>
+<li>Windows Task Scheduler, which it asks whether the job is enabled and when it runs next.</li>
+</ul>
+<p>The queue and publishing-off lines carry a button for the next step. A queue warning copies a ready-made request for Claude Code to the clipboard: a refill, or a review if unreviewed posts are sitting in the queue. The &quot;publishing is off&quot; warning turns publishing on from the panel. The two red lines about a failed or missing run only open the blog&#x27;s status view, and from there I still read the log myself.</p>
+<h2>The rule that would have missed this site</h2>
+<p>The second row of the left-out table has a cost, and this site is the example.</p>
+<p>For its first 99 days, this site was exactly what the new rules call dormant. The publisher had never run, scheduled publishing wasn&#x27;t on, and the queue was empty. Under the September rules that was an amber line. Under the rules I use now, it would be a &quot;dormant&quot; label, a one-line note that publishing hasn&#x27;t started, and no line in &quot;Do now.&quot;</p>
+<p>I kept the rule anyway. A site I haven&#x27;t started isn&#x27;t a fault for a monitor to catch. It&#x27;s a decision I haven&#x27;t made, and a warning that sits there for 99 days is one I&#x27;d learn to skip, which is the same problem as the stale amber line. The cost is that the panel will stay quiet about a blog I set up and then never switch on.</p>
+<h2>A phone version</h2>
+<p>The panel also has a phone version. A small web server on my PC serves the same screen to the browser on my phone.</p>
+<div class="table-wrap"><table><thead><tr><th>Choice</th><th>Detail</th></tr></thead><tbody><tr><td>One source</td><td>Desktop and phone screens draw what a shared file computes, so they can&#x27;t disagree</td></tr><tr><td>A key in the URL</td><td>Any request without a random key is refused</td></tr><tr><td>Not on the internet</td><td>Reachable from my home network, or through Tailscale, a private network between my own devices</td></tr><tr><td>Opening files</td><td>Only accepted when the request comes from the PC itself</td></tr><tr><td>Fresh numbers</td><td>The queue and schedule are read every time I open it</td></tr></tbody></table></div>
+<p>The key is there because the panel can publish. Another device on my home network that stumbles on the address gets nothing.</p>
+<h2>What the panel is for now</h2>
+<p>What ended this site&#x27;s 99 days was a refill I asked for on November 1. What&#x27;s meant to stop the next one is taking myself out of the step the panel kept pointing at. The panel told me to ask Claude Code for a refill, and I was the slow part of that chain. Since November 4 a scheduled Claude Code task does the refill on its own, which is the subject of <a href="./blog-refills-itself.html">the post about the blog refilling itself</a>.</p>
+<p>So the panel has a narrower job now. It checks whether the refill task is keeping the queue stocked. If &quot;Do now&quot; is empty, I close it. If there&#x27;s a line, it&#x27;s something the scheduled task couldn&#x27;t fix or hasn&#x27;t got to yet.</p>
+<p>The amber &quot;two posts left&quot; line doesn&#x27;t fully pass that test. The refill task drafts at most one post per run, twice a week, and the publisher takes two a week, so on a normal week the line comes and goes on its own. When a refill fails its gates, the line stays, and that is the case I&#x27;d actually want to see. On November 11 the refill run drafted this post, the draft failed the gates and stayed in drafts, and the November 14 run fixed it and queued it. I haven&#x27;t changed the amber rule yet. It should fire only when the queue will run out before the next refill run.</p>
+<p>The panel also still says nothing unless I open it, and the phone version goes dark when the PC does. An alert that reaches my phone when the queue hits zero isn&#x27;t built yet.</p>
+<p>If I were asking Claude Code for a panel like this again, I&#x27;d say:</p>
+<blockquote><p>Build a one-screen panel for my scheduled blog. Have the publish script rewrite a small state file on every run, including runs with nothing to publish: last run time, last result, last publish date. The panel reads that file, counts the reviewed posts in <code>scheduled/</code>, and asks Windows Task Scheduler whether the job is enabled and when it runs next. List a warning only if it stays broken unless I act: a failed run, an empty queue while publishing is on, no run for 8 days or more while publishing is on, one or two posts left, or publishing switched off. Don&#x27;t list a long gap since the last post when the queue has posts and the next run is set. If the publisher has never run and isn&#x27;t switched on, label the site as dormant instead of warning. Give each warning a button for the next step.</p></blockquote>
+<aside class="cta"><h3>About this site</h3><p>I'm documenting what it actually takes to build automated income streams as a non-engineer, including the parts that failed. <a href="./self-updating-blog-github-pages.html">Start with the build log</a>.</p></aside>
+
+</main>
+<footer class="site-foot">
+  <nav class="foot-nav"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy Policy</a></nav>
+  <p>&copy; 2026 Automating the Boring Parts</p>
+</footer>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e68807f2531a462986fa95731dfba93e"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
