@@ -47,7 +47,7 @@
 </ul>
 <h2>The step I never automated</h2>
 <p>Writing new posts was always meant to be a human step. When I built the pipeline, Claude Code&#x27;s cloud scheduler couldn&#x27;t reach my setup, and I couldn&#x27;t get it to run unattended on the PC either. I also wanted to read every post before it went out. So the plan was simple: when the queue gets low, I ask Claude Code to write more, I read the drafts, and the approved ones go in the queue.</p>
-<p>I did build a warning: a small control panel that flags a queue running low or empty. It only warns me while it&#x27;s open, and I wasn&#x27;t opening it.</p>
+<p>I did build a warning: a <a href="./blog-dashboard-warnings.html">small control panel</a> that flags a queue running low or empty. It only warns me while it&#x27;s open, and I wasn&#x27;t opening it.</p>
 <p>I&#x27;d learned this once already. That same pipeline once sat dead for over a month because a launcher file had the wrong line endings and I never read the log. A warning you have to go and look at isn&#x27;t much of a warning, and knowing that didn&#x27;t stop it from happening again.</p>
 <h2>Refilling is now a Claude Code skill</h2>
 <p>This time I didn&#x27;t just ask for more posts. I asked Claude Code to turn the whole refill job into a skill. In Claude Code, a skill is a written procedure plus a few small scripts, kept together, which it follows whenever I ask for that kind of job.</p>
