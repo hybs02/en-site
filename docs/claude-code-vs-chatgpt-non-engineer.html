@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Automating the Boring Parts">
 <meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Code vs ChatGPT: What It Does That a Chat Window Can't", "description": "Not a benchmark. Four things I watched Claude Code do in the folders behind this blog and a Chrome extension, and the parts of the work it still left to me.", "url": "https://hybs02.github.io/en-site/claude-code-vs-chatgpt-non-engineer.html", "author": {"@type": "Organization", "name": "Automating the Boring Parts"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-07-25", "dateModified": "2026-11-14"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Code vs ChatGPT: What It Does That a Chat Window Can't", "description": "Not a benchmark. Four things I watched Claude Code do in the folders behind this blog and a Chrome extension, and the parts of the work it still left to me.", "url": "https://hybs02.github.io/en-site/claude-code-vs-chatgpt-non-engineer.html", "author": {"@type": "Organization", "name": "Automating the Boring Parts"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-07-25", "dateModified": "2026-11-21"}</script>
 
 </head>
 <body>
@@ -26,7 +26,7 @@
   <p class="tagline">A non-engineer&#x27;s log of building income streams with Claude Code</p>
 </header>
 <main>
-<time>2026-07-25</time> <time class="updated" datetime="2026-11-14">Updated 2026-11-14</time>
+<time>2026-07-25</time> <time class="updated" datetime="2026-11-21">Updated 2026-11-21</time>
 <h1>Claude Code vs ChatGPT: What It Does That a Chat Window Can&#x27;t</h1>
 <p class="byline">Written by <a href="./about.html">Automating the Boring Parts</a></p>
 <div class="tags"><a class="tag" href="./tag-claude-code.html">Claude Code</a><span class="tag">tools</span><span class="tag">non-engineer</span><a class="tag" href="./tag-build-log.html">build log</a></div>
@@ -34,10 +34,10 @@
 <p>For about a year my workflow was: ask the chat assistant a question, get a block of code, paste it into a file, run it, watch it fail, paste the error back, get a revision, paste that in, run it again.</p>
 <p>That loop is where I lived. And I got things done in it. But every single step of it was me acting as a courier between two systems that couldn&#x27;t see each other.</p>
 <p>Claude Code removes the courier. That&#x27;s the one-line summary, and everything below is me being specific about what that changes when you can&#x27;t read the code you&#x27;re carrying.</p>
-<p>Short answer: ChatGPT in a browser tab sees only what you paste into it. Claude Code works inside a folder on your computer, reads the files, runs them and reads the errors itself. Everything below comes from building and running this blog and the pipeline behind it, plus one browser extension.</p>
+<p>Short answer: ChatGPT in a browser tab sees only what you paste into it. Claude Code works inside a folder on your computer, reads the files, runs them and reads the errors itself. Everything below comes from building this blog, the pipeline behind it and the first site I ran on that pipeline, plus one browser extension.</p>
 <h2>The difference isn&#x27;t intelligence, it&#x27;s access</h2>
 <p>Let me set the comparison up fairly, because &quot;X beats Y&quot; posts usually cheat here.</p>
-<p>The model answering me in a chat window is very capable. ChatGPT has also added its own ways to work on files, including a desktop app that can read and change files in a folder you pick, and OpenAI&#x27;s Codex. Nothing on this site was built with those, so I&#x27;m not comparing them here. What I&#x27;m comparing is the way I actually worked before: a chat window that sees what I paste and produces text I have to place somewhere. The gap between its output and my working system was me, and I&#x27;m the unreliable part.</p>
+<p>The model answering me in a chat window is very capable. ChatGPT isn&#x27;t limited to a chat window anymore either: its desktop app now includes Codex, which works in a folder you pick, runs commands and edits files. Nothing on this site was built with it, so I&#x27;m not comparing it here. What I&#x27;m comparing is the way I actually worked before: a chat window that sees what I paste and produces text I have to place somewhere. The gap between its output and my working system was me, and I&#x27;m the unreliable part.</p>
 <p>Claude Code runs in my project folder. It reads my actual files, edits them in place, runs commands, and reads what comes back out. It runs Anthropic&#x27;s Claude models, not the ones behind ChatGPT, so this isn&#x27;t a like-for-like model test. For me the bigger difference was where it works.</p>
 <p>For an engineer that&#x27;s a convenience. For a non-engineer it&#x27;s the whole thing, because the courier steps are precisely the ones I&#x27;m bad at.</p>
 <h2>Example one: the garbled text</h2>
