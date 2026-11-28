@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Automating the Boring Parts">
 <meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Monitoring an Automated Blog: What My Dashboard Warns About", "description": "Claude Code built me a one-screen panel for my automated blog. It raises five warnings and leaves two out on purpose. The rules, and what a panel can't do.", "url": "https://hybs02.github.io/en-site/blog-dashboard-warnings.html", "author": {"@type": "Organization", "name": "Automating the Boring Parts"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-11-16", "dateModified": "2026-11-16"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Monitoring an Automated Blog: What My Dashboard Warns About", "description": "Claude Code built me a one-screen panel for my automated blog. It raises five warnings and leaves two out on purpose. The rules, and what a panel can't do.", "url": "https://hybs02.github.io/en-site/blog-dashboard-warnings.html", "author": {"@type": "Organization", "name": "Automating the Boring Parts"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-11-16", "dateModified": "2026-11-28"}</script>
 
 </head>
 <body>
@@ -26,7 +26,7 @@
   <p class="tagline">A non-engineer&#x27;s log of building income streams with Claude Code</p>
 </header>
 <main>
-<time>2026-11-16</time>
+<time>2026-11-16</time> <time class="updated" datetime="2026-11-28">Updated 2026-11-28</time>
 <h1>Monitoring an Automated Blog: What My Dashboard Warns About</h1>
 <p class="byline">Written by <a href="./about.html">Automating the Boring Parts</a></p>
 <div class="tags"><a class="tag" href="./tag-build-log.html">build log</a><a class="tag" href="./tag-automation.html">automation</a><a class="tag" href="./tag-claude-code.html">Claude Code</a></div>
@@ -72,7 +72,7 @@
 <h2>What the panel is for now</h2>
 <p>What ended this site&#x27;s 99 days was a refill I asked for on November 1. What&#x27;s meant to stop the next one is taking myself out of the step the panel kept pointing at. The panel told me to ask Claude Code for a refill, and I was the slow part of that chain. Since November 4 a scheduled Claude Code task does the refill on its own, which is the subject of <a href="./blog-refills-itself.html">the post about the blog refilling itself</a>.</p>
 <p>So the panel has a narrower job now. It checks whether the refill task is keeping the queue stocked. If &quot;Do now&quot; is empty, I close it. If there&#x27;s a line, it&#x27;s something the scheduled task couldn&#x27;t fix or hasn&#x27;t got to yet.</p>
-<p>The amber &quot;two posts left&quot; line doesn&#x27;t fully pass that test. The refill task drafts at most one post per run, twice a week, and the publisher takes two a week. Going in and coming out are the same speed at best, so the queue can&#x27;t climb back above two, and the amber line is on almost all the time. Every refill that fails its gates leaves the queue one post shorter. On November 11 the refill run drafted this post, the draft failed the gates and stayed in drafts, and the November 14 run fixed it and queued it. After this post went out on November 16, the queue was empty. I haven&#x27;t changed the amber rule, or how many posts a run may draft.</p>
+<p>The amber &quot;two posts left&quot; line doesn&#x27;t fully pass that test. The publisher takes two posts a week. The refill task runs twice a week and drafts up to two posts when the queue is low, but it writes the second only after the first has passed every gate. So a run that holds its draft back, or never runs, leaves the queue a post shorter, and the amber line is on most of the time. On November 11 the refill run drafted this post, the draft failed the gates and stayed in drafts, and the November 14 run fixed it and queued it. After this post went out on November 16, the queue was empty. I haven&#x27;t changed the amber rule.</p>
 <p>The panel also still says nothing unless I open it, and the phone version goes dark when the PC does. An alert that reaches my phone when the queue hits zero isn&#x27;t built yet.</p>
 <p>If I were asking Claude Code for a panel like this again, I&#x27;d say:</p>
 <blockquote><p>Build a one-screen panel for my scheduled blog. Have the publish script rewrite a small state file on every run, including runs with nothing to publish: last run time, last result, last publish date. The panel reads that file, counts the reviewed posts in <code>scheduled/</code>, and asks Windows Task Scheduler whether the job is enabled and when it runs next. List a warning only if it stays broken unless I act: a failed run, an empty queue while publishing is on, no run for 8 days or more while publishing is on, one or two posts left, or publishing switched off. Don&#x27;t list a long gap since the last post when the queue has posts and the next run is set. If the publisher has never run and isn&#x27;t switched on, label the site as dormant instead of warning. Give each warning a button for the next step.</p></blockquote>

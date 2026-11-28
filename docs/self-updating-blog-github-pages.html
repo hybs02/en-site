@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Automating the Boring Parts">
 <meta property="og:image" content="https://hybs02.github.io/en-site/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "A $0 Self-Updating Blog on GitHub Pages: The Whole Setup", "description": "How this site runs for $0 on GitHub Pages: a Python generator, a reviewed-only queue, and a scheduled publisher. Real costs, the setup steps, and what broke.", "url": "https://hybs02.github.io/en-site/self-updating-blog-github-pages.html", "author": {"@type": "Organization", "name": "Automating the Boring Parts"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-07-25", "dateModified": "2026-11-14"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "A $0 Self-Updating Blog on GitHub Pages: The Whole Setup", "description": "How this site runs for $0 on GitHub Pages: a Python generator, a reviewed-only queue, and a scheduled publisher. Real costs, the setup steps, and what broke.", "url": "https://hybs02.github.io/en-site/self-updating-blog-github-pages.html", "author": {"@type": "Organization", "name": "Automating the Boring Parts"}, "publisher": {"@type": "Organization", "name": "Automating the Boring Parts"}, "datePublished": "2026-07-25", "dateModified": "2026-11-28"}</script>
 
 </head>
 <body>
@@ -26,7 +26,7 @@
   <p class="tagline">A non-engineer&#x27;s log of building income streams with Claude Code</p>
 </header>
 <main>
-<time>2026-07-25</time> <time class="updated" datetime="2026-11-14">Updated 2026-11-14</time>
+<time>2026-07-25</time> <time class="updated" datetime="2026-11-28">Updated 2026-11-28</time>
 <h1>A $0 Self-Updating Blog on GitHub Pages: The Whole Setup</h1>
 <p class="byline">Written by <a href="./about.html">Automating the Boring Parts</a></p>
 <div class="tags"><a class="tag" href="./tag-build-log.html">build log</a><span class="tag">GitHub Pages</span><a class="tag" href="./tag-automation.html">automation</a><span class="tag">costs</span></div>
@@ -41,7 +41,7 @@
 <li>The generated files get pushed to GitHub, and GitHub Pages serves them.</li>
 <li>A scheduled task on my PC takes the next finished article from a queue folder at 7 a.m. on Mondays and Thursdays and runs that whole chain.</li>
 </ul>
-<p>That task only publishes. Writing is a separate job: twice a week a Claude Code scheduled task checks the queue, and when it&#x27;s low, drafts a post and decides on its own whether to queue it. That half is in <a href="./blog-refills-itself.html">the post about the blog refilling itself</a>. The queue spreads the posts out, one at a time.</p>
+<p>That task only publishes. Writing is a separate job: twice a week a Claude Code scheduled task checks the queue and, if fewer than four reviewed posts are waiting, drafts up to two and decides on its own whether to queue each one. That half is in <a href="./blog-refills-itself.html">the post about the blog refilling itself</a>. The queue spreads the posts out, one at a time.</p>
 <p>The generator uses nothing but Python&#x27;s standard library. There are no packages to install, so there&#x27;s nothing that breaks because someone else&#x27;s project moved on.</p>
 <p>I also built in a gate. A queued article only publishes if its header says <code>reviewed: true</code>, and that line only goes in after the draft passes the machine checks and a blind review by a separate Claude instance. Automating publication without a quality check just means thin posts go out on a reliable schedule. The gate only covers the queue: a file dropped straight into the articles folder goes live on the next build.</p>
 <h3>Why not WordPress</h3>
@@ -52,7 +52,7 @@
 <div class="table-wrap"><table><thead><tr><th>Item</th><th>What I use</th><th>Cost</th></tr></thead><tbody><tr><td>Domain</td><td>none, a github.io subdomain</td><td>$0</td></tr><tr><td>Hosting</td><td>GitHub Pages</td><td>$0</td></tr><tr><td>HTTPS certificate</td><td>included with github.io</td><td>$0</td></tr><tr><td>Analytics</td><td>Cloudflare Web Analytics</td><td>$0</td></tr><tr><td>Site generator</td><td>written with Claude Code</td><td>$0</td></tr></tbody></table></div>
 <p>GitHub Pages is free for public repositories. Published sites are limited to 1 GB, with a soft bandwidth limit of 100 GB a month, which a small text blog won&#x27;t come near. One condition worth reading before you monetize: GitHub says Pages is not intended for, or allowed to be used as, free hosting for an online business or an e-commerce site. I haven&#x27;t put ads on this site, so I haven&#x27;t had to find out where that line is.</p>
 <p>If you want your own domain, that&#x27;s the one recurring cost: the registration fee, paid every year. You&#x27;d also have to set up DNS, and that&#x27;s a step this site skips.</p>
-<p><strong>The AI subscription I used to build this is not free.</strong> I&#x27;d pay for it anyway for other work, so I don&#x27;t count it against the blog, but that&#x27;s an accounting choice and you should know I made it. The other cost is time. The pipeline took about half a day to get working, and this site reuses those scripts. New posts are drafted by the scheduled Claude Code run, not by me.</p>
+<p><strong>The AI subscription I used to build this is not free.</strong> I&#x27;d pay for it anyway for other work, so I don&#x27;t count it against the blog, but that&#x27;s an accounting choice and you should know I made it. The other cost is time. The pipeline took about half a day to get working, and this site reuses those scripts. Since November 4, new posts are drafted by a scheduled Claude Code run rather than at my request.</p>
 <h2>Setting it up</h2>
 <p>These are the steps, in the order I&#x27;d do them again.</p>
 <ol>
@@ -77,11 +77,12 @@ python -c &quot;import sys; print(sys.executable)&quot;
 <p>This happened on the first site I built on this pipeline, before this one existed.</p>
 <p>I built the automatic publishing, watched a post go out on schedule, and felt done. Some weeks later I looked again. It had been dead for over a month.</p>
 <p>The cause was the scheduler&#x27;s <code>.cmd</code> file. It had been saved with Unix-style line endings, the invisible characters at the end of each line, and Windows expects its own. The errors had been piling up in a log the whole time, and I never opened it.</p>
-<p>What I took from that: <strong>a scheduled job that fails doesn&#x27;t tell you.</strong> I now save <code>.cmd</code> files with Windows line endings on purpose, and I look at the publish log once a month.</p>
+<p>What I took from that: <strong>a scheduled job that fails doesn&#x27;t tell you.</strong> I now save <code>.cmd</code> files with Windows line endings on purpose. Reading the log was supposed to be the other half of the fix, and as <a href="./blog-quiet-99-days.html">the 99-days post</a> shows, I didn&#x27;t keep that up.</p>
 <h2>Where this site stands</h2>
 <p>The first posts went up by hand on July 25, 2026. Every post since then has gone out through the queue, at 7 a.m. on a Monday or a Thursday, with nobody at the keyboard. The long gap after those first posts is in <a href="./blog-quiet-99-days.html">the 99-days post</a>.</p>
+<p>The queue hasn&#x27;t always kept up since. The last post went out on November 16, and the 7 a.m. runs on November 19, 23 and 26 found nothing to publish and logged an empty queue.</p>
 <p>I&#x27;m not quoting a visitor number. I haven&#x27;t looked at this site&#x27;s analytics closely enough to trust a figure, and as above, the tracking script undercounts the readers most likely to be here. Revenue is zero.</p>
-<p>The infrastructure part works. It costs $0 a month and a non-engineer can run it. Whether anyone reads the posts is a separate question.</p>
+<p>The publishing half works, costs $0 a month, and a non-engineer can run it. Keeping the queue stocked is the half that doesn&#x27;t work reliably yet. Whether anyone reads the posts is a separate question.</p>
 <p>The low cost is what lets me keep going. At $0 I can be wrong for a long time. At $30 a month I think I&#x27;d have added affiliate links by week three.</p>
 
 
